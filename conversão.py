@@ -33,7 +33,7 @@ today = today.strftime("%m-%d-%Y")
 func = input('Tecle 1 para valor de dolar histórico, e 2 para conversão: ')
 
 if func == '1':
-    dataIniCotacao = input('desde quando vc quer consultar? (use formato "MM-DD-AAAA") ')
+    dataIniCotacao = input('desde quando você quer consultar? (use formato "MM-DD-AAAA") ')
     print('---------------------------------------------------------------------------')
     dataFimCotacao = tomorrow
 
@@ -50,7 +50,7 @@ elif func =='2':
     df_dolar = consultaCotacao(dataIniCotacao,dataFimCotacao)
     
     cotacao_dolar = df_dolar.SellPrice.to_list()[0]
-    qtd_dolares  = input('quantos dolares vc quer comprar? ')
+    qtd_dolares  = input('quantos dolares você quer comprar? ')
     valor_reais = cotacao_dolar * float(qtd_dolares)
     print ('a cotação do dolar hoje está em: R$'+str(cotacao_dolar))
     print('Para comprar USD'+ str(qtd_dolares)+', você precisa pagar R$'+ str(valor_reais))
