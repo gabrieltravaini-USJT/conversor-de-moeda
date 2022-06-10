@@ -16,7 +16,6 @@ def consultaCotacao (dataIniCotacao,dataFimCotacao):
     url_api = "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial='" + dataIniCotacao + "',dataFinalCotacao='" + dataFimCotacao + "')?$format=json"
 
     resp = requests.get(url_api)
-
     df_dolar = pd.json_normalize(json.loads(resp.text)['value'])
 
     df_dolar.rename(columns = {'cotacaoCompra': 'BuyPrice', 'cotacaoVenda': 'SellPrice', 'dataHoraCotacao': 'ExchangeDate'}, inplace = True)
@@ -52,5 +51,9 @@ elif func =='2':
     cotacao_dolar = df_dolar.SellPrice.to_list()[0]
     qtd_dolares  = input('quantos dolares você quer comprar? ')
     valor_reais = cotacao_dolar * float(qtd_dolares)
+    qtd_dolares = float(qtd_dolares)
+    qtd_dolares = round(qtd_dolares,2)
+    valor_reais = round(valor_reais,2)
+
     print ('a cotação do dolar hoje está em: R$'+str(cotacao_dolar))
     print('Para comprar USD'+ str(qtd_dolares)+', você precisa pagar R$'+ str(valor_reais))
