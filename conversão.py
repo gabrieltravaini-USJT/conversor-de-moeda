@@ -40,7 +40,7 @@ if func == '1':
 
     print('tabela com as taxas de conversão do periodo solicitado:')
     print('-------------------------------------------------------------------------------------------------------------')
-    print(df_dolar)
+    print(df_dolar.ExchangeDate)
 
 elif func =='2':
     dataIniCotacao = today
